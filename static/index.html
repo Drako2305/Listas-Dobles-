@@ -1,0 +1,158 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#f5f4f0">
+    <title>Pelagos | Conservation log</title>
+    <link rel="stylesheet" href="/styles.css">
+    <script src="/app.js" defer></script>
+  </head>
+  <body>
+    <div class="app-shell">
+      <header class="topbar">
+        <a class="brand" href="/" aria-label="Pelagos home">
+          <span class="brand-mark" aria-hidden="true">
+            <svg viewBox="0 0 36 36" fill="none">
+              <path d="M4 19c4.2-6.5 8.4-6.5 12.6 0s8.4 6.5 12.6 0" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/>
+              <path d="M7 25c3.7-4.5 7.4-4.5 11.1 0s7.4 4.5 11.1 0M18 5v8m-3.5-4.5L18 5l3.5 3.5" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </span>
+          <span class="brand-name">PELAGOS<span class="brand-period">.</span></span>
+        </a>
+        <div class="topbar-right">
+          <span class="workspace-label">CONSERVATION LAB</span>
+          <span class="avatar" aria-label="Research workspace">RL</span>
+        </div>
+      </header>
+
+      <main>
+        <section class="page-heading">
+          <div class="heading-copy">
+            <p class="eyebrow"><span class="live-dot"></span> UNDERWATER ARCHAEOLOGY · SITE NS-04</p>
+            <h1>Conservation log</h1>
+            <p class="heading-description">A living record of every treatment, observation, and handoff.</p>
+          </div>
+          <button class="button button-primary" id="new-entry-button" type="button">
+            <span aria-hidden="true">+</span> Add entry
+          </button>
+        </section>
+
+        <section class="summary-grid" aria-label="Timeline summary">
+          <article class="summary-card">
+            <span class="summary-label">TOTAL ENTRIES</span>
+            <strong id="entry-count">—</strong>
+            <span class="summary-footnote">in this treatment record</span>
+          </article>
+          <article class="summary-card">
+            <span class="summary-label">CURRENT POSITION</span>
+            <strong id="current-position">—</strong>
+            <span class="summary-footnote">selected entry</span>
+          </article>
+          <article class="summary-card summary-card-accent">
+            <span class="summary-label">RECORD STATUS</span>
+            <strong><span class="status-indicator"></span> In progress</strong>
+            <span class="summary-footnote">monitoring active</span>
+          </article>
+        </section>
+
+        <div class="content-grid">
+          <section class="panel timeline-panel" aria-labelledby="timeline-heading">
+            <div class="panel-heading">
+              <div>
+                <p class="eyebrow">FIELD RECORD</p>
+                <h2 id="timeline-heading">Treatment timeline</h2>
+              </div>
+              <span class="direction-badge"><span aria-hidden="true">↕</span> DOUBLY LINKED</span>
+            </div>
+            <div class="timeline-controls">
+              <button class="icon-button" id="previous-button" type="button" aria-label="Go to previous entry">
+                <span aria-hidden="true">←</span>
+              </button>
+              <span class="navigation-hint">Move through the record</span>
+              <button class="icon-button" id="next-button" type="button" aria-label="Go to next entry">
+                <span aria-hidden="true">→</span>
+              </button>
+            </div>
+            <ol class="timeline-list" id="timeline-list" aria-label="Treatment entries"></ol>
+            <div class="empty-state" id="empty-state" hidden>
+              <span class="empty-icon" aria-hidden="true">◌</span>
+              <h3>No treatment entries yet</h3>
+              <p>Start the record with the first observation or treatment.</p>
+              <button class="button button-secondary" id="empty-add-button" type="button">Create first entry</button>
+            </div>
+          </section>
+
+          <section class="panel detail-panel" aria-labelledby="detail-heading">
+            <div class="panel-heading detail-heading">
+              <div>
+                <p class="eyebrow">ENTRY DETAILS</p>
+                <h2 id="detail-heading">Selected record</h2>
+              </div>
+              <div class="entry-actions">
+                <button class="text-button" id="edit-button" type="button">Edit</button>
+                <button class="text-button text-button-danger" id="delete-button" type="button">Delete</button>
+              </div>
+            </div>
+            <div class="entry-detail" id="entry-detail" aria-live="polite"></div>
+            <div class="detail-empty" id="detail-empty" hidden>
+              <p>Select a timeline entry to inspect its treatment notes.</p>
+            </div>
+          </section>
+        </div>
+
+        <section class="panel entry-form-panel" id="entry-form-panel" aria-labelledby="form-heading" hidden>
+          <div class="panel-heading">
+            <div>
+              <p class="eyebrow">CONSERVATION RECORD</p>
+              <h2 id="form-heading">Add treatment entry</h2>
+            </div>
+            <button class="icon-button close-button" id="close-form-button" type="button" aria-label="Close form">×</button>
+          </div>
+          <form id="entry-form">
+            <div class="form-grid">
+              <label class="field">
+                <span>Entry title <span class="required-mark">*</span></span>
+                <input name="title" required maxlength="160" placeholder="e.g. Initial condition survey">
+              </label>
+              <label class="field">
+                <span>Date and time <span class="required-mark">*</span></span>
+                <input name="recorded_at" type="datetime-local" required>
+              </label>
+              <label class="field">
+                <span>Location <span class="required-mark">*</span></span>
+                <input name="location" required maxlength="160" placeholder="e.g. Conservation lab · Wet room">
+              </label>
+              <label class="field">
+                <span>Conservator <span class="required-mark">*</span></span>
+                <input name="conservator" required maxlength="160" placeholder="Name of the responsible conservator">
+              </label>
+              <label class="field field-full">
+                <span>Treatment or observation <span class="required-mark">*</span></span>
+                <textarea name="treatment" required maxlength="5000" rows="2" placeholder="Describe the work carried out or condition observed"></textarea>
+              </label>
+              <label class="field field-full">
+                <span>Materials and equipment</span>
+                <input name="materials" maxlength="5000" placeholder="Materials, equipment, or reference numbers">
+              </label>
+              <label class="field field-full">
+                <span>Notes</span>
+                <textarea name="notes" maxlength="5000" rows="3" placeholder="Observations, measurements, or follow-up actions"></textarea>
+              </label>
+            </div>
+            <p class="form-error" id="form-error" role="alert" hidden></p>
+            <div class="form-actions">
+              <button class="button button-secondary" id="cancel-form-button" type="button">Cancel</button>
+              <button class="button button-primary" id="save-button" type="submit">Save entry</button>
+            </div>
+          </form>
+        </section>
+      </main>
+      <footer>
+        <span>PELAGOS CONSERVATION LOG</span>
+        <span>One node at a time · <span id="footer-year"></span></span>
+      </footer>
+      <div class="toast" id="toast" role="status" aria-live="polite"></div>
+    </div>
+  </body>
+</html>

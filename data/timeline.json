@@ -1,0 +1,32 @@
+[
+  {
+    "id": "sample-recovery-record",
+    "recorded_at": "2026-09-23T09:15",
+    "title": "Artifact received from recovery team",
+    "location": "North Shoal Wreck · Site NS-04",
+    "conservator": "Mara Ellis",
+    "treatment": "Logged a copper-alloy fitting into the conservation register following controlled recovery. The object remained in its recovery container pending transfer to the wet room.",
+    "materials": "Recovery container RC-04-118; temporary object tag NS04-F17",
+    "notes": "Provenance and transfer documentation checked at receipt. No dry storage or surface cleaning performed."
+  },
+  {
+    "id": "sample-condition-survey",
+    "recorded_at": "2026-09-24T13:40",
+    "title": "Initial condition survey",
+    "location": "Maritime Conservation Lab · Wet room",
+    "conservator": "Mara Ellis",
+    "treatment": "Completed a visual survey while the fitting remained wet. Recorded visible marine growth, surface deposits, and areas requiring closer observation.",
+    "materials": "Object tray WT-12; photo scale; condition record NS04-F17",
+    "notes": "Baseline photographs filed under NS04-F17. Corrosion products were left undisturbed during documentation."
+  },
+  {
+    "id": "sample-monitoring-plan",
+    "recorded_at": "2026-09-26T10:05",
+    "title": "Monitoring plan approved",
+    "location": "Maritime Conservation Lab · Documentation desk",
+    "conservator": "Jon Bell",
+    "treatment": "Established a supervised monitoring schedule for the fitting and linked its observations to the object record.",
+    "materials": "Monitoring sheet MS-04; sealed sample labels",
+    "notes": "Next review scheduled with the conservation team. Any change in appearance will be documented before further treatment is considered."
+  }
+]
